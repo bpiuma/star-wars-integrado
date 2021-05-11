@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 export const Card = props => {
@@ -9,9 +10,9 @@ export const Card = props => {
 				<div className="card-body">
 					<h5 className="card-title">{props.nombre}</h5>
 					<p className="m-0 p-0">Descripcion</p>
-					<a href={props.url} className="btn btn-primary mt-3">
-						Learn More!
-					</a>
+					<Link to={"/single/" + props.id}>
+						<button className="btn btn-primary mt-3">Learn More!</button>
+					</Link>
 				</div>
 			</div>
 		</div>
@@ -20,5 +21,6 @@ export const Card = props => {
 
 Card.propTypes = {
 	nombre: PropTypes.string,
-	url: PropTypes.string
+	url: PropTypes.string,
+	id: PropTypes.number
 };

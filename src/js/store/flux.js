@@ -16,6 +16,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			personajes: [],
 			planetas: []
+			// personajesProp: [{ id: 1, propiedades: "hola" }],
+			// planetasProp: []
 		},
 
 		// en actions estan las funciones para operar con las variables globales
@@ -37,7 +39,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(resp => resp.json())
 					.then(data => setStore({ planetas: data.results }))
 					.catch(error => console.log(error));
+
+				// //Traemos las propiedades de los personajes
+				// let aux = [];
+				// for (let i = 1; i <= 10; i++) {
+				// 	fetch("https://www.swapi.tech/api/people/" + i)
+				// 		.then(resp => resp.json())
+				// 		.then(data => aux.push(data.result.properties))
+				// 		.catch(error => console.log(error));
+				// }
+				// setStore({ personajesProp: aux });
 			},
+
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
