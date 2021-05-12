@@ -3,15 +3,15 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const Single = () => {
+export const SinglePlanet = () => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 
-	const [personaje, setPersonaje] = useState({});
+	const [planeta, setPlaneta] = useState({});
 
-	fetch("https://www.swapi.tech/api/people/" + params.theid)
+	fetch("https://www.swapi.tech/api/planets/" + params.theid)
 		.then(resp => resp.json())
-		.then(data => setPersonaje(data.result.properties))
+		.then(data => setPlaneta(data.result.properties))
 		.catch(error => console.log(error));
 
 	return (
@@ -21,7 +21,7 @@ export const Single = () => {
 					<img src="https://picsum.photos/seed/picsum/400/300" className="imagen" />
 				</div>
 				<div className="col-6">
-					<h1 className="text-center mb-3">{personaje.name}</h1>
+					<h1 className="text-center mb-3">{planeta.name}</h1>
 					<p className="text-center">
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ultricies nisi metus, non mattis
 						mi faucibus nec. Ut cursus dui magna, sed sagittis lorem convallis in. Nulla ultrices, erat eget
@@ -43,27 +43,27 @@ export const Single = () => {
 			<div className="row">
 				<div className="col-2 text-center text-danger">
 					<p className="font-weight-bold">Name</p>
-					<p className="font-italic">{personaje.name}</p>
+					<p className="font-italic">{planeta.name}</p>
 				</div>
 				<div className="col-2 text-center text-danger">
-					<p className="font-weight-bold">Birth Year</p>
-					<p className="font-italic">{personaje.birth_year}</p>
+					<p className="font-weight-bold">Climate</p>
+					<p className="font-italic">{planeta.climate}</p>
 				</div>
 				<div className="col-2 text-center text-danger">
-					<p className="font-weight-bold">Gender</p>
-					<p className="font-italic">{personaje.gender}</p>
+					<p className="font-weight-bold">Population</p>
+					<p className="font-italic">{planeta.population}</p>
 				</div>
 				<div className="col-2 text-center text-danger">
-					<p className="font-weight-bold">Height</p>
-					<p className="font-italic">{personaje.height}</p>
+					<p className="font-weight-bold">Orbital Period</p>
+					<p className="font-italic">{planeta.orbital_period}</p>
 				</div>
 				<div className="col-2 text-center text-danger">
-					<p className="font-weight-bold">Skin Color</p>
-					<p className="font-italic">{personaje.skin_color}</p>
+					<p className="font-weight-bold">Rotation Period</p>
+					<p className="font-italic">{planeta.rotation_period}</p>
 				</div>
 				<div className="col-2 text-center text-danger">
-					<p className="font-weight-bold">Eye Color</p>
-					<p className="font-italic">{personaje.eye_color}</p>
+					<p className="font-weight-bold">Diameter</p>
+					<p className="font-italic">{planeta.diameter}</p>
 				</div>
 			</div>
 		</div>

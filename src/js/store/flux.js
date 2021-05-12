@@ -15,7 +15,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			personajes: [],
-			planetas: []
+			planetas: [],
+			favoritos: []
 			// personajesProp: [{ id: 1, propiedades: "hola" }],
 			// planetasProp: []
 		},
@@ -26,6 +27,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
+
+			agregarFavorito: fav => {
+				if (!getActions().esFavorito(fav)) {
+					let store = getStore();
+					setStore({ favoritos: [...store.favoritos, fav] });
+				}
+			},
+
+			esFavorito: fav => {
+				let store = getStore();
+				return store.favoritos.includes(fav);
+			},
+
+			eliminarFavorito: fav => {
+				let aux = getStore().favoritos;
+				aux.map((elem, i) => {
+					if (elem == fav) {
+						aux.splice(i, 1);
+					}
+				});
+				setStore({ favoritos: aux });
+			},
+
+			// if (getActions().esFavorito(fav)) {
+			//     let aux = getStore().favoritos;
+			//     aux.map((elem, i) => {
+			//         if (elem == fav) {
+			//             store.favorites.splice(i, 1);
+			//         }
+			//     }
+			//     //let aux = store.favoritos.splice(fav);
+			// 	setStore({ favoritos: aux });
+			// }
 
 			loadSomeData: () => {
 				//Traemos a los personajes
