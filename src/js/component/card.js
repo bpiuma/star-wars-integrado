@@ -12,16 +12,13 @@ export const Card = props => {
 	const [fav, setFav] = useState(false);
 
 	return (
-		<div className="col-2 ml-3 mb-3 p-0" style={{ width: "18rem" }}>
+		<div className="col-2 ml-3 mr-3 mb-4 p-0" style={{ width: "18rem" }}>
 			<div className="card">
-				<img
-					src="https://www.hola.com/imagenes/actualidad/20200103157393/ewan-mcgregor-star-wars-luke-gt/0-764-938/portada-obi-wan-t.jpg"
-					className="card-img-top imagenCard"
-				/>
+				<img src={props.source} className="card-img-top imagenCard" />
 				<div>
 					<div className="card-body">
 						<h5 className="card-title mb-2">{props.nombre}</h5>
-						<p className="m-0 p-0">Descripcion</p>
+						<p className="m-0 p-0">Description</p>
 						<div className="d-flex justify-content-between align-items-center">
 							{props.tipo == "personaje" ? (
 								<Link to={"/single/" + props.id}>
@@ -64,5 +61,6 @@ Card.propTypes = {
 	nombre: PropTypes.string,
 	url: PropTypes.string,
 	id: PropTypes.number,
-	tipo: PropTypes.string
+	tipo: PropTypes.string,
+	source: PropTypes.string
 };
