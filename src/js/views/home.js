@@ -10,13 +10,17 @@ export const Home = () => {
 
 	return (
 		<div>
-			<h2 className="ml-3 text-danger">Characters</h2>
+			<h2 className="ml-3" style={{ color: "red" }}>
+				Characters
+			</h2>
 			<div className="contenedor d-flex mt-3 mb-3">
 				{store.personajes.map((elem, i) => {
 					return <Card key={i} id={i + 1} nombre={elem.name} url={elem.url} tipo={"personaje"} />;
 				})}
 			</div>
-			<h2 className="ml-3 text-danger">Planets</h2>
+			<h2 className="ml-3" style={{ color: "red" }}>
+				Planets
+			</h2>
 			<div className="contenedor d-flex mt-3 mb-3">
 				{store.planetas.map((elem, i) => {
 					return <Card key={i} id={i + 1} nombre={elem.name} url={elem.url} tipo={"planeta"} />;

@@ -15,7 +15,7 @@ export const SinglePlanet = () => {
 		.catch(error => console.log(error));
 
 	return (
-		<div className="container">
+		<div className="container singleP">
 			<div className="row">
 				<div className="col-6">
 					<img src="https://picsum.photos/seed/picsum/400/300" className="imagen" />

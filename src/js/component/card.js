@@ -14,7 +14,10 @@ export const Card = props => {
 	return (
 		<div className="col-2 ml-3 mb-3 p-0" style={{ width: "18rem" }}>
 			<div className="card">
-				<img src="https://picsum.photos/seed/picsum/300/200" className="card-img-top" />
+				<img
+					src="https://www.hola.com/imagenes/actualidad/20200103157393/ewan-mcgregor-star-wars-luke-gt/0-764-938/portada-obi-wan-t.jpg"
+					className="card-img-top imagenCard"
+				/>
 				<div>
 					<div className="card-body">
 						<h5 className="card-title mb-2">{props.nombre}</h5>
@@ -31,23 +34,23 @@ export const Card = props => {
 							)}
 
 							{fav && actions.esFavorito(props.nombre) ? (
-								<button
-									className="btn mt-3 mr-0"
+								<div
+									className="mt-3 mr-0"
 									onClick={() => {
 										actions.eliminarFavorito(props.nombre);
 										setFav(false);
 									}}>
-									<Icon icon={bxHeartSquare} color="yellow" height="40" />
-								</button>
+									<Icon icon={bxHeartSquare} color="red" height="40" />
+								</div>
 							) : (
-								<button
-									className="btn mt-3 mr-0"
+								<div
+									className="mt-3 mr-0"
 									onClick={() => {
 										actions.agregarFavorito(props.nombre);
 										setFav(true);
 									}}>
 									<Icon icon={bxHeartSquare} color="grey" height="40" />
-								</button>
+								</div>
 							)}
 						</div>
 					</div>
