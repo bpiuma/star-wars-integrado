@@ -51,7 +51,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				fetch(process.env.BACKEND_URL + "/login", requestOptions)
 					.then(response => response.json())
-					.then(result => sessionStorage.setItem("token", result.token))
+					.then(result => {
+						console.log(result);
+						sessionStorage.setItem("token", result.token);
+					})
 					.catch(error => console.log("error", error));
 
 				//OTRA FORMA:

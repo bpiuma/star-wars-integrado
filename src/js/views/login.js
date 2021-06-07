@@ -1,13 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "../../styles/home.scss";
 import { Context } from "../store/appContext";
 
 export const Login = () => {
 	const { store, actions } = useContext(Context);
 
+	const [mail, setMail] = useState("");
+	const [pass, setPass] = useState("");
+
 	const login = e => {
 		e.preventDefault();
-		actions.login("bpiuma.uy@gmail.com", "123");
+		actions.login(mail, pass);
 	};
 
 	return (
@@ -17,12 +20,25 @@ export const Login = () => {
 					<h1>Login</h1>
 				</div>
 				<div className="form-group">
-					<label htmlFor="exampleInputEmail1">Email</label>
-					<input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+					<label htmlFor="inputEmail">Email</label>
+					<input
+						type="email"
+						className="form-control"
+						id="inputEmail"
+						aria-describedby="emailHelp"
+						onChange={e => setMail(e.target.value)}
+						value={mail}
+					/>
 				</div>
 				<div className="form-group">
-					<label htmlFor="exampleInputPassword1">Password</label>
-					<input type="password" className="form-control" id="exampleInputPassword1" />
+					<label htmlFor="inputPassword">Password</label>
+					<input
+						type="password"
+						className="form-control"
+						id="inputPassword"
+						onChange={e => setPass(e.target.value)}
+						value={pass}
+					/>
 				</div>
 				<div className="form-group form-check">
 					<input type="checkbox" className="form-check-input" id="exampleCheck1" />
