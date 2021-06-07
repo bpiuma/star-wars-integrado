@@ -33,6 +33,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		// en actions estan las funciones para operar con las variables globales
 		actions: {
+			login: async (mail, pass) => {
+				var myHeaders = new Headers();
+				myHeaders.append("Content-Type", "application/json");
+
+				var raw = JSON.stringify({
+					email: mail,
+					password: pass
+				});
+
+				var requestOptions = {
+					method: "POST",
+					headers: myHeaders,
+					body: raw,
+					redirect: "follow"
+				};
+
+				fetch(process.env.BACKEND_URL + "/login", requestOptions)
+					.then(response => response.json())
+					.then(result => sessionStorage.setItem("token", result.token))
+					.catch(error => console.log("error", error));
+
+				//OTRA FORMA:
+				// const response = await fetch(process.env.BACKEND_URL + "/login", requestOptions);
+				// try {
+				//     const result = await response.json();
+				//     sessionStorage.setItem("token", result.token);
+				// } catch (error) {
+				//     console.log(error)
+				// }
+			},
+
 			agregarFavorito: fav => {
 				if (!getActions().esFavorito(fav)) {
 					let store = getStore();
